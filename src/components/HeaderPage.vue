@@ -3,20 +3,18 @@
     <div class="top_header">
       <div class="main_w top_head">
         <div class="head_left">
-          <h2>VUE JS & VUE X</h2>
+          <p class="clock_time">{{ currentDate }} {{ currentTime }}</p>
         </div>
         <div class="head_right">
-          <router-link to="/login" class="btn_login btn_auth">Login</router-link>
-          <router-link to="/register" class="btn_register btn_auth">Register</router-link>
+          <router-link to="/login" class="btn_login btn_auth">{{ $t('login') }}</router-link>
+          <router-link to="/register" class="btn_register btn_auth">{{ $t('register') }}</router-link>
           <div class="language">
             <ul class="languagepicker large">
-              <li><a href="#en"><img src="../assets/images/flag/en.png" /></a></li>
-              <li><a href="#kh"><img src="../assets/images/flag/ca.png" /></a></li>
-              <li><a href="#cn"><img src="../assets/images/flag/cn.png" /></a></li>
-              <li><a href="#kh"><img src="../assets/images/flag/vn.png" /></a></li>
-              <li><a href="#cn"><img src="../assets/images/flag/th.png" /></a></li>
-              <li><a href="#kh"><img src="../assets/images/flag/id.png" /></a></li>
-              <li><a href="#cn"><img src="../assets/images/flag/hk.png" /></a></li>
+              <li v-for="language in languages" :key="language.code" :class="{ active: currentLanguage === language.code }">
+                <a href="#" @click="changeLanguage(language.code)">
+                  <img :src="require(`../assets/images/flag/${language.flag}.png`)" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -42,6 +40,36 @@
 
 <script>
 export default {
-  name: 'HeaderPage'
+  name: 'HeaderPage',
+  data() {
+    return {
+      currentDate: this.getCurrentDate(),
+      currentTime: new Date().toLocaleTimeString(),
+      languages: [
+        { code: 'en', flag: 'en' }, { code: 'kh', flag: 'ca' },
+        { code: 'cn', flag: 'cn' }, { code: 'vn', flag: 'vn' },
+        { code: 'th', flag: 'th' }, { code: 'id', flag: 'id' },
+      ],
+      currentLanguage: 'en'
+    };
+  },
+  methods: {
+    changeLanguage(code) {
+      this.$i18n.locale = code; 
+      this.currentLanguage = code;
+    },
+    getCurrentDate(dateObj = new Date()) {
+      const options = { month: 'long', day: 'numeric', year: 'numeric' };
+      const dateComponents = dateObj.toLocaleDateString('en-US', options).split(' ');
+      return `${dateComponents[0]} / ${dateComponents[0]} / ${dateComponents[2]}`;
+    },
+  },
+   mounted() {
+    this.timer = setInterval(() => {
+      const now = new Date();
+      this.currentDate = this.getCurrentDate(now);
+      this.currentTime = now.toLocaleTimeString();
+    }, 1000);
+  },
 }
 </script>

@@ -74,6 +74,12 @@ body {
     margin-top: 5px;
 }
 
+.head_left .clock_time {
+    color: #fff;
+    font-size: 14px;
+    padding-top: 15px;
+}
+
 .head_right {
     display: flex;
     gap: 10px;
@@ -91,7 +97,7 @@ body {
     line-height: 2.2;
 }
 
-.btn_auth:hover{
+.btn_auth:hover {
     color: #fff;
 }
 
@@ -318,8 +324,9 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 8px 7px;
+    gap: 15px;
     padding: 0 5px;
+    /* justify-content: space-between; */
 }
 
 .tab-content .titles_game {
@@ -338,7 +345,15 @@ body {
 
 .tab-content .items_game {
     position: relative;
-    width: 24.5%;
+    width: 24%;
+    /* box-shadow: ; */
+    transition: all .3s ease-in-out;
+}
+
+.tab-content .hover_card:hover {
+    transform: translateY(5px);
+    /* box-shadow: 4px 2px 4px rgba(242, 1, 1, 0.33); */
+    box-shadow: 0 5px 5px rgba(255, 0, 0, .7);
 }
 
 .tab-content .items_game .img_game {
@@ -369,9 +384,19 @@ body {
     height: 100%;
 }
 
+.box_name {
+    text-transform: capitalize;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    background-color: #285a8d;
+    margin-bottom: 0 !important;
+}
+
 .text_title {
     color: white;
     font-size: 20px;
+    text-transform: uppercase;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -381,7 +406,7 @@ body {
     text-align: center;
 }
 
-.items_game .overlays em {
+.items_game em {
     font-size: 14px;
     padding: 8px 30px;
     border-radius: 5px;
@@ -531,3 +556,12 @@ body {
 }
 
 /* end footer  */
+
+body {
+    background-image: url('../images/1.jpg');
+    background-size: cover;
+    min-height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}

@@ -11,53 +11,28 @@ import RegisterPage from '../views/RegisterPage.vue';
 import LoginPage from '../views/LoginPage.vue';
 
 const routes = [
-  { path: '/register',name: 'RegisterPage', component: RegisterPage },
+  // auth 
+  { path: '/register', name: 'RegisterPage', component: RegisterPage },
   { path: '/login', name: 'LoginPage', component: LoginPage },
-  {
-    path: '/',
-    name: 'IndexLobby',
-    component: IndexLobby
-  },
-  {
-    path: '/sport_lobby',
-    name: 'SportLobby',
-    component: SportLobby
-  },
-  {
-    path: '/casino_lobby',
-    name: 'CasinoLobby',
-    component: CasinoLobby
-  },
-  {
-    path: '/slot_lobby',
-    name: 'SlotLobby',
-    component: SlotLobby
-  },
-  {
-    path: '/lottery_lobby',
-    name: 'LotteryLobby',
-    component: LotteryLobby
-  },
-  {
-    path: '/number_lobby',
-    name: 'NumberLobby',
-    component: NumberLobby
-  },
-  {
-    path: '/poker_lobby',
-    name: 'PokerLobby',
-    component: PokerLobby
-  },
-  {
-    path: '/cock_lobby',
-    name: 'CockLobby',
-    component: CockLobby
-  }
+  // page lobby
+  { path: '/', name: 'IndexLobby', component: IndexLobby, },
+  { path: '/sport_lobby', name: 'SportLobby', component: SportLobby, meta: { title: 'hcgaming - sport lobby' } },
+  { path: '/casino_lobby', name: 'CasinoLobby', component: CasinoLobby, meta: { title: 'hcgaming - casino lobby' } },
+  { path: '/slot_lobby', name: 'SlotLobby', component: SlotLobby, meta: { title: 'hcgaming - slot lobby' } },
+  { path: '/lottery_lobby', name: 'LotteryLobby', component: LotteryLobby, meta: { title: 'hcgaming - lottery lobby' } },
+  { path: '/number_lobby', name: 'NumberLobby', component: NumberLobby, meta: { title: 'hcgaming - number lobby' } },
+  { path: '/poker_lobby', name: 'PokerLobby', component: PokerLobby, meta: { title: 'hcgaming - poker lobby' } },
+  { path: '/cock_lobby', name: 'CockLobby', component: CockLobby, meta: { title: 'chcgaming - cock lobby' } }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || 'hcgaming'; 
+  next();
+});
 
 export default router

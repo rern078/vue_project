@@ -131,7 +131,7 @@
           <h4 class="titles_game">LOTTERY</h4>
           <div class="items_main">
             <div class="items_game" v-for="(items, index) in lotteryLobby" :key="index">
-              <img class="img_game" v-bind:src="items.url" :alt="items.name"> 
+              <img class="img_game" v-bind:src="items.url" :alt="items.name">
               <span class="overlays">
                 <div class="text_title">
                   <h5>{{ items.name }}</h5>
@@ -146,7 +146,7 @@
         <div class="tab-pane fade" id="nav-poker" role="tabpanel" aria-labelledby="nav-poker-tab" tabindex="0">
           <h4 class="titles_game">POKER</h4>
           <div class="items_main">
-            <div class="items_game" v-for="(items , index) in pokerLobby" :key="index">
+            <div class="items_game" v-for="(items, index) in pokerLobby" :key="index">
               <img class="img_game" v-bind:src="items.url" alt="">
               <span class="overlays">
                 <div class="text_title">
@@ -163,8 +163,8 @@
           tabindex="0">
           <h4 class="titles_game">COCK FIGHTING</h4>
           <div class="items_main">
-            <div class="items_game" v-for="(items , index) in cockLobby" :key="index">
-              <img  class="img_game" v-bind:src="items.url">
+            <div class="items_game" v-for="(items, index) in cockLobby" :key="index">
+              <img class="img_game" v-bind:src="items.url">
               <span class="overlays">
                 <div class="text_title">
                   <h5>{{ items.name }}</h5>
@@ -188,60 +188,61 @@ export default {
   data() {
     return {
       hotLobby: [
-        { name: 'HOTGAME1', url: require('@/assets/images/home/1.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/2.jpg') },
-        { name: 'HOTGAME1', url: require('@/assets/images/home/5.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/6.jpg') },
-        { name: 'HOTGAME1', url: require('@/assets/images/home/8.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/9.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/11.jpg') },
-        { name: 'HOTGAME1', url: require('@/assets/images/home/12.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/allbet.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/dg99.jpg') },
-        { name: 'HOTGAME1', url: require('@/assets/images/home/pp_ca.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/sexy.jpg') },{ name: 'HOTGAME1', url: require('@/assets/images/home/tga.jpg') },
+        { name: 'HOTGAME1', url: require('@/assets/images/home/1.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/2.jpg') },
+        { name: 'HOTGAME1', url: require('@/assets/images/home/5.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/6.jpg') },
+        { name: 'HOTGAME1', url: require('@/assets/images/home/8.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/9.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/11.jpg') },
+        { name: 'HOTGAME1', url: require('@/assets/images/home/12.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/allbet.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/dg99.jpg') },
+        { name: 'HOTGAME1', url: require('@/assets/images/home/pp_ca.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/sexy.jpg') }, { name: 'HOTGAME1', url: require('@/assets/images/home/tga.jpg') },
       ],
       sportLobby: [
-        { name: 'SPORT1', url: require('@/assets/images/sport/afb2.png') },{ name: 'SPORT1', url: require('@/assets/images/sport/ibc.png') },
-        { name: 'SPORT1', url: require('@/assets/images/sport/sbo.png') },{ name: 'SPORT1', url: require('@/assets/images/sport/tf.png') },
+        { name: 'afb2 sport', url: require('@/assets/images/sport/afb2.png') }, { name: 'ibc sport', url: require('@/assets/images/sport/ibc.png') },
+        { name: 'sbo sport', url: require('@/assets/images/sport/sbo.png') }, { name: 'tf sport', url: require('@/assets/images/sport/tf.png') },
+        { name: 'wesport sport', url: require('@/assets/images/sport/wesports.jpg') },
       ],
       casinoLobby: [
-        { name: 'CASINO1', url: require('@/assets/images/casino/allbet.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/dg99.png') },
-        { name: 'CASINO1', url: require('@/assets/images/casino/evo.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/gd.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/pp_ca.png') },
-        { name: 'CASINO1', url: require('@/assets/images/casino/sa.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/sexy.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/tga.png') },
-        { name: 'CASINO1', url: require('@/assets/images/casino/welive.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/wm.png') },{ name: 'CASINO1', url: require('@/assets/images/casino/yeebet.png') },
+        { name: 'tga casino', url: require('@/assets/images/casino/tga.jpg') }, { name: 'evo casino', url: require('@/assets/images/casino/evo.jpg') }, { name: 'supernowa casino', url: require('@/assets/images/casino/supernowa.jpg') }, { name: 'miki casino', url: require('@/assets/images/casino/miki.jpg') },
+        { name: 'ag casino', url: require('@/assets/images/casino/ag.jpg') }, { name: 'gd casino', url: require('@/assets/images/casino/gd.jpg') }, { name: 'pp_ca casino', url: require('@/assets/images/casino/pp_ca.jpg') }, { name: 'sa casino', url: require('@/assets/images/casino/sa.jpg') },
+        { name: 'allbet casino', url: require('@/assets/images/casino/allbet.jpg') }, { name: 'sexy casino', url: require('@/assets/images/casino/sexy.jpg') }, { name: 'royal casino', url: require('@/assets/images/casino/royal.jpg') }, { name: 'welive casino', url: require('@/assets/images/casino/welive.jpg') },
+        { name: 'dg99 casino', url: require('@/assets/images/casino/dg99.jpg') }, { name: 'wm casino', url: require('@/assets/images/casino/wm.jpg') }, { name: 'yeebet casino', url: require('@/assets/images/casino/yeebet.jpg') }, { name: 'n2live casino', url: require('@/assets/images/casino/n2live.jpg') },
       ],
       slotLobby: [
-        { name: 'SLOT1', url: require('@/assets/images/slot/afb.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/bestsoft.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/cq9.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/dragoon.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/fc.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/haba.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/icg.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/jili.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/joker.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/ka.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/leap.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/mega888.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/mg.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/netent.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/nextgen.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/pg.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/platipus.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/playstar.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/pp.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/pt.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/rich88.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/spadegaming.jpg') },
-        { name: 'SLOT1', url: require('@/assets/images/slot/w88.jpg') },{ name: 'SLOT1', url: require('@/assets/images/slot/xe88.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/afb.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/bestsoft.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/cq9.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/dragoon.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/fc.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/918kiss.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/icg.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/jili.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/joker.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/btg.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/leap.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/mega888.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/mg.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/netent.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/nextgen.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/pg.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/platipus.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/playstar.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/fishing.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/pt.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/rich88.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/spadegaming.jpg') },
+        { name: 'SLOT1', url: require('@/assets/images/slot/w88.jpg') }, { name: 'SLOT1', url: require('@/assets/images/slot/xe88.jpg') },
       ],
       fishingLobby: [
-        { name: 'FISHING1', url: require('@/assets/images/fish/1.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/2.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/3.png') },
-        { name: 'FISHING1', url: require('@/assets/images/fish/4.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/5.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/6.png') },
-        { name: 'FISHING1', url: require('@/assets/images/fish/7.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/8.png') },
-        { name: 'FISHING1', url: require('@/assets/images/fish/9.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/10.png') },
-        { name: 'FISHING1', url: require('@/assets/images/fish/11.png') },{ name: 'FISHING1', url: require('@/assets/images/fish/12.png') },
+        { name: 'FISHING1', url: require('@/assets/images/fish/1.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/2.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/3.png') },
+        { name: 'FISHING1', url: require('@/assets/images/fish/4.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/5.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/6.png') },
+        { name: 'FISHING1', url: require('@/assets/images/fish/7.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/8.png') },
+        { name: 'FISHING1', url: require('@/assets/images/fish/9.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/10.png') },
+        { name: 'FISHING1', url: require('@/assets/images/fish/11.png') }, { name: 'FISHING1', url: require('@/assets/images/fish/12.png') },
       ],
       numberLobby: [
-        { name: 'NUMBER1', url: require('@/assets/images/number/keno.jpg')},{ name: 'NUMBER1', url: require('@/assets/images/number/keno_new.jpg') },
-        { name: 'NUMBER1', url: require('@/assets/images/number/livenumber.jpg')}, { name: 'NUMBER1', url: require('@/assets/images/number/new-keno.jpg') },
-        { name: 'NUMBER1', url: require('@/assets/images/number/number.jpg')},
+        { name: 'NUMBER1', url: require('@/assets/images/number/keno.jpg') }, { name: 'NUMBER1', url: require('@/assets/images/number/keno_new.jpg') },
+        { name: 'NUMBER1', url: require('@/assets/images/number/livenumber.jpg') }, { name: 'NUMBER1', url: require('@/assets/images/number/new-keno.jpg') },
+        { name: 'NUMBER1', url: require('@/assets/images/number/number.jpg') },
       ],
       lotteryLobby: [
-        { name: 'LOTTERY1', url: require('@/assets/images/lottery/lottery.jpg')},{ name: 'LOTTERY1', url: require('@/assets/images/lottery/thai_lottery.jpg') },
-        { name: 'LOTTERY1', url: require('@/assets/images/lottery/vn_lottery.jpg')},{ name: 'LOTTERY1', url: require('@/assets/images/lottery/vn2_lottery.jpg')},
+        { name: 'LOTTERY1', url: require('@/assets/images/lottery/lottery.jpg') }, { name: 'LOTTERY1', url: require('@/assets/images/lottery/thai_lottery.jpg') },
+        { name: 'LOTTERY1', url: require('@/assets/images/lottery/vn_lottery.jpg') }, { name: 'LOTTERY1', url: require('@/assets/images/lottery/vn2_lottery.jpg') },
       ],
       pokerLobby: [
-        { name: 'POKER1', url: require('@/assets/images/poker/apoung.jpg') },{ name: 'POKER1', url: require('@/assets/images/poker/ham.jpg') },
-        { name: 'POKER1', url: require('@/assets/images/poker/kaiyuan.jpg') },{ name: 'POKER1', url: require('@/assets/images/poker/kate.jpg') },
-        { name: 'POKER1', url: require('@/assets/images/poker/klaklouk.jpg') },{ name: 'POKER1', url: require('@/assets/images/poker/ongdo.jpg') },
-        { name: 'POKER1', url: require('@/assets/images/poker/poke.jpg') },{ name: 'POKER1', url: require('@/assets/images/poker/sikuthai.jpg') },
-        { name: 'POKER1', url: require('@/assets/images/poker/tienlen.jpg') },{ name: 'POKER1', url: require('@/assets/images/poker/we1poker.jpg') },
+        { name: 'POKER1', url: require('@/assets/images/poker/apoung.jpg') }, { name: 'POKER1', url: require('@/assets/images/poker/ham.jpg') },
+        { name: 'POKER1', url: require('@/assets/images/poker/kaiyuan.jpg') }, { name: 'POKER1', url: require('@/assets/images/poker/kate.jpg') },
+        { name: 'POKER1', url: require('@/assets/images/poker/klaklouk.jpg') }, { name: 'POKER1', url: require('@/assets/images/poker/ongdo.jpg') },
+        { name: 'POKER1', url: require('@/assets/images/poker/poke.jpg') }, { name: 'POKER1', url: require('@/assets/images/poker/sikuthai.jpg') },
+        { name: 'POKER1', url: require('@/assets/images/poker/tienlen.jpg') }, { name: 'POKER1', url: require('@/assets/images/poker/we1poker.jpg') },
       ],
       cockLobby: [
-        { name: 'COCK1', url: require('@/assets/images/cock/s128.jpg')}, { name: 'COCK1', url: require('@/assets/images/cock/sv388.jpg')},
+        { name: 'COCK1', url: require('@/assets/images/cock/s128.jpg') }, { name: 'COCK1', url: require('@/assets/images/cock/sv388.jpg') },
       ]
     }
   }
