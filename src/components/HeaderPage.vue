@@ -39,8 +39,7 @@
     </nav>
     <!-- Register Pop Up  -->
     <div v-if="showPopup" class="popup">
-      
-      <RegisterForm />
+      <RegisterForm @close="showPopup = false" />
     </div>
     <!-- End Register Pop Up  -->
   </header>

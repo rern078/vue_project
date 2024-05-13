@@ -1,6 +1,6 @@
 <template>
   <div class="form_wrapper">
-    <span @click="showPopup = false" class="close">&times;</span>
+    <span @click="$emit('close')" class="close">&times;</span>
     <div class="form_container">
       <div class="title_container">
         <h2>Registration Account</h2>
@@ -108,6 +108,9 @@
 <script>
 
 export default {
-
+  data() {
+    return {
+    };
+  }
 };
 </script>
