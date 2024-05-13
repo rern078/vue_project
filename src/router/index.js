@@ -7,13 +7,13 @@ import LotteryLobby from '../views/LotteryLobby.vue'
 import NumberLobby from '../views/NumberLobby.vue'
 import PokerLobby from '../views/PokerLobby.vue'
 import CockLobby from '../views/CockLobby.vue'
-import RegisterPage from '../views/RegisterPage.vue';
-import LoginPage from '../views/LoginPage.vue';
+// import RegisterPage from '../views/RegisterPage.vue';
+// import LoginPage from '../views/LoginPage.vue';
 
 const routes = [
   // auth 
-  { path: '/register', name: 'RegisterPage', component: RegisterPage },
-  { path: '/login', name: 'LoginPage', component: LoginPage },
+  // { path: '/register', name: 'RegisterPage', component: RegisterPage },
+  // { path: '/login', name: 'LoginPage', component: LoginPage },
   // page lobby
   { path: '/', name: 'IndexLobby', component: IndexLobby, },
   { path: '/sport_lobby', name: 'SportLobby', component: SportLobby, meta: { title: 'hcgaming - sport lobby' } },

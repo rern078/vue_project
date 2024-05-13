@@ -6,11 +6,13 @@
           <p class="clock_time">{{ currentDate }} {{ currentTime }}</p>
         </div>
         <div class="head_right">
-          <router-link to="/login" class="btn_login btn_auth">{{ $t('login') }}</router-link>
-          <router-link to="/register" class="btn_register btn_auth">{{ $t('register') }}</router-link>
+          <!-- <router-link to="/login" class="btn_login btn_auth">{{ $t('login') }}</router-link> -->
+          <button @click="showPopup = true" class="btn_register btn_auth">{{ $t('register') }}</button>
+
           <div class="language">
             <ul class="languagepicker large">
-              <li v-for="language in languages" :key="language.code" :class="{ active: currentLanguage === language.code }">
+              <li v-for="language in languages" :key="language.code"
+                :class="{ active: currentLanguage === language.code }">
                 <a href="#" @click="changeLanguage(language.code)">
                   <img :src="require(`../assets/images/flag/${language.flag}.png`)" />
                 </a>
@@ -35,14 +37,25 @@
         </div>
       </div>
     </nav>
+    <!-- Register Pop Up  -->
+    <div v-if="showPopup" class="popup">
+      
+      <RegisterForm />
+    </div>
+    <!-- End Register Pop Up  -->
   </header>
 </template>
 
 <script>
+import RegisterForm from '../components/RegisterForm.vue';
 export default {
   name: 'HeaderPage',
+  components: {
+    RegisterForm
+  },
   data() {
     return {
+      showPopup: false,
       currentDate: this.getCurrentDate(),
       currentTime: new Date().toLocaleTimeString(),
       languages: [
@@ -55,7 +68,7 @@ export default {
   },
   methods: {
     changeLanguage(code) {
-      this.$i18n.locale = code; 
+      this.$i18n.locale = code;
       this.currentLanguage = code;
     },
     getCurrentDate(dateObj = new Date()) {
@@ -64,7 +77,7 @@ export default {
       return `${dateComponents[0]} / ${dateComponents[0]} / ${dateComponents[2]}`;
     },
   },
-   mounted() {
+  mounted() {
     this.timer = setInterval(() => {
       const now = new Date();
       this.currentDate = this.getCurrentDate(now);
