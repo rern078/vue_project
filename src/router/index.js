@@ -7,13 +7,13 @@ import LotteryLobby from '../views/LotteryLobby.vue'
 import NumberLobby from '../views/NumberLobby.vue'
 import PokerLobby from '../views/PokerLobby.vue'
 import CockLobby from '../views/CockLobby.vue'
-// import RegisterPage from '../views/RegisterPage.vue';
-// import LoginPage from '../views/LoginPage.vue';
+
+import DashboardIndex from '../components/dashboard/DashboardIndex.vue'
 
 const routes = [
-  // auth 
-  // { path: '/register', name: 'RegisterPage', component: RegisterPage },
-  // { path: '/login', name: 'LoginPage', component: LoginPage },
+  // Dashboard 
+  { path: '/dashboard', name: 'DashboardIndex', component: DashboardIndex, meta: { title: 'hcgaming - dashboard' } },
+
   // page lobby
   { path: '/', name: 'IndexLobby', component: IndexLobby, },
   { path: '/sport_lobby', name: 'SportLobby', component: SportLobby, meta: { title: 'hcgaming - sport lobby' } },
@@ -31,7 +31,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'hcgaming'; 
+  document.title = to.meta.title || 'hcgaming';
   next();
 });
 

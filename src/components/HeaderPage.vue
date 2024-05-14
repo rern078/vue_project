@@ -7,8 +7,8 @@
         </div>
         <div class="head_right">
           <!-- <router-link to="/login" class="btn_login btn_auth">{{ $t('login') }}</router-link> -->
-          <button @click="showPopup = true" class="btn_register btn_auth">{{ $t('register') }}</button>
-
+          <button @click="showLogin = true" class="btn_login btn_auth">{{ $t('login') }}</button>
+          <button @click="showRegister = true" class="btn_register btn_auth">{{ $t('register') }}</button>
           <div class="language">
             <ul class="languagepicker large">
               <li v-for="language in languages" :key="language.code"
@@ -38,23 +38,31 @@
       </div>
     </nav>
     <!-- Register Pop Up  -->
-    <div v-if="showPopup" class="popup">
-      <RegisterForm @close="showPopup = false" />
+    <div v-if="showRegister" class="popup">
+      <RegisterForm v-if="showRegister" @close="showRegister = false" @show-login="switchToLogin" />
     </div>
     <!-- End Register Pop Up  -->
+    <!-- Login Pop Up  -->
+    <div v-if="showLogin" class="popup">
+      <LoginForm v-if="showLogin" @close="showLogin = false" @show-register="switchToRegister" />
+    </div>
+    <!-- End Login Pop Up  -->
   </header>
 </template>
 
 <script>
 import RegisterForm from '../components/RegisterForm.vue';
+import LoginForm from '../components/LoginForm.vue';
 export default {
   name: 'HeaderPage',
   components: {
-    RegisterForm
+    RegisterForm,
+    LoginForm,
   },
   data() {
     return {
-      showPopup: false,
+      showRegister: false,
+      showLogin: false,
       currentDate: this.getCurrentDate(),
       currentTime: new Date().toLocaleTimeString(),
       languages: [
@@ -75,6 +83,14 @@ export default {
       const dateComponents = dateObj.toLocaleDateString('en-US', options).split(' ');
       return `${dateComponents[0]} / ${dateComponents[0]} / ${dateComponents[2]}`;
     },
+    switchToRegister() {
+      this.showLogin = false;
+      this.showRegister = true;
+    },
+    switchToLogin() {
+      this.showLogin = true;
+      this.showRegister = false;
+    }
   },
   mounted() {
     this.timer = setInterval(() => {

@@ -16,13 +16,7 @@ export default {
   components: {
     HeaderPage,
     SliderPage,
-    FooterPage
+    FooterPage,
   }
 }
 </script>
-
-<style>
-.router-link-exact-active {
-  color: red,
-}
-</style>
