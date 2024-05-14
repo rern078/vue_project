@@ -7,46 +7,58 @@
       </div>
       <div class="row clearfix">
         <div class="">
-          <form @submit.prevent="register">
+          <form @submit.prevent="register" @click="checkInputTypes">
             <div class="input_field">
               <span><i aria-hidden="true" class="fa fa-user"></i></span>
-              <input type="text" v-model="useracc" name="useracc" id="useracc" placeholder="Username" required />
+              <input type="text" ref="useraccInput" v-model="useracc" name="useracc" id="useracc" placeholder="Username"
+                @focus="focusInput('useracc')" />
+              <em class="validation-message" v-show="focusedInput === 'useracc'">{{ useraccMessage }}</em>
             </div>
             <div class="input_field">
               <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <input type="password" v-model="passwd" name="passwd" id="passwd" placeholder="Password" required />
+              <input type="password" ref="passwdInput" v-model="passwd" name="passwd" id="passwd" placeholder="Password"
+                @focus="focusInput('passwd')" />
+              <em class="validation-message" v-show="focusedInput === 'passwd'">{{ passwdMessage }}</em>
             </div>
             <div class="input_field">
               <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <input type="password" v-model="repasswd" name="repasswd" id="repasswd" placeholder="Re-type Password"
-                required />
+              <input type="password" ref="repasswdInput" v-model="repasswd" name="repasswd" id="repasswd"
+                placeholder="Re-type Password" />
+              <em class="validation-message">{{ repasswdMessage }}</em>
             </div>
             <div class="input_field">
               <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-              <input type="email" v-model="email" name="email" id="email" placeholder="Email" required />
+              <input type="email" ref="emailInput" v-model="email" name="email" id="email" placeholder="Email"
+                @focus="focusInput('email')" />
+              <em class="validation-message" v-show="focusedInput === 'email'">{{ emailMessage }}</em>
             </div>
             <div class="input_field">
               <span><i aria-hidden="true" class="fa-solid fa-phone"></i></span>
-              <input type="text" v-model="callphone" name="callphone" id="callphone" placeholder="Call Phone"
-                required />
+              <input type="text" ref="callphoneInput" v-model="callphone" name="callphone" id="callphone"
+                placeholder="Call Phone" />
+              <em class="validation-message">{{ callphoneMessage }}</em>
             </div>
             <div class="input_field">
               <span><i aria-hidden="true" class="fa-solid fa-asterisk"></i></span>
-              <input type="text" v-model="referrall_id" name="referrall_id" id="referrall_id" placeholder="Referrall"
-                required />
+              <input type="text" ref="referrall_idInput" v-model="referrall_id" name="referrall_id" id="referrall_id"
+                placeholder="Referrall" />
+              <em class="validation-message">{{ referrall_idMessage }}</em>
             </div>
             <div class="row clearfix">
               <div class="col_half">
                 <div class="input_field">
                   <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                  <input type="text" v-model="firstname" name="firstname" id="firstname" placeholder="First Name" />
+                  <input type="text" ref="firstnameInput" v-model="firstname" name="firstname" id="firstname"
+                    placeholder="First Name" />
+                  <em class="validation-message">{{ firstnameMessage }}</em>
                 </div>
               </div>
               <div class="col_half">
                 <div class="input_field">
                   <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                  <input type="text" v-model="lastname" name="lastname" id="lastname" placeholder="Last Name"
-                    required />
+                  <input type="text" ref="lastnameInput" v-model="lastname" name="lastname" id="lastname"
+                    placeholder="Last Name" />
+                  <em class="validation-message">{{ lastnameMessage }}</em>
                 </div>
               </div>
             </div>
@@ -58,8 +70,8 @@
             </div> -->
             <div class="input_field select_option">
               <span><i aria-hidden="true" class="fa-solid fa-dollar-sign"></i></span>
-              <select v-model="currency" name="currency" id="currency">
-                <option>Select Currency</option>
+              <select v-model="currency" ref="currencyInput" name="currency" id="currency">
+                <option value="0" disabled>Select Currency</option>
                 <option value="usd">USD</option>
                 <option value="eur">EUR</option>
                 <option value="gbp">GBP</option>
@@ -69,8 +81,8 @@
             </div>
             <div class="input_field select_option">
               <span><i aria-hidden="true" class="fa-solid fa-building-columns"></i></span>
-              <select v-model="bank" name="bank" id="bank">
-                <option>Select Bank</option>
+              <select v-model="bank" ref="bankInput" name="bank" id="bank">
+                <option value="0" selected>Select Bank</option>
                 <option value="aba">ABA</option>
                 <option value="acleda">ACLEDA</option>
                 <option value="wing">WING</option>
@@ -82,15 +94,17 @@
               <div class="col_half">
                 <div class="input_field">
                   <span><i aria-hidden="true" class="fa-solid fa-building-columns"></i></span>
-                  <input type="text" v-model="accbankname" name="accbankname" id="accbankname"
+                  <input type="text" ref="accbanknameInput" v-model="accbankname" name="accbankname" id="accbankname"
                     placeholder="Bank Account Name" />
+                  <em class="validation-message">{{ accbanknameMessage }}</em>
                 </div>
               </div>
               <div class="col_half">
                 <div class="input_field">
                   <span><i aria-hidden="true" class="fa-solid fa-building-columns"></i></span>
-                  <input type="text" v-model="accbanknumber" name="accbanknumber" id="accbanknumber"
-                    placeholder="Bank Account Number" required />
+                  <input type="text" ref="accbanknumberInput" v-model="accbanknumber" name="accbanknumber"
+                    id="accbanknumber" placeholder="Bank Account Number" />
+                  <em class="validation-message">{{ accbanknumberMessage }}</em>
                 </div>
               </div>
             </div>
@@ -117,22 +131,72 @@
 export default {
   data() {
     return {
-      useracc: '',
-      email: '',
-      passwd: '',
-      repasswd: '',
-      callphone: '',
-      referrall_id: '',
-      firstname: '',
-      lastname: '',
-      currency: '',
-      bank: '',
-      accbankname: '',
-      accbanknumber: ''
+      useracc: '', passwd: '', repasswd: '', email: '', callphone: '', referrall_id: '',
+      firstname: '', lastname: '', currency: '', bank: '', accbankname: '', accbanknumber: '',
+      // useraccMessage: '', passwdMessage: ''
+      // useraccMessage: 'Account name should contain at least one letter and one number.',
+      // // emailMessage: 'Invalid email format.',
+      // passwdMessage: 'Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.',
+      // focusedInput: null
     };
   },
+
   methods: {
     async register() {
+      // Validation check for empty fields
+      if (!this.useracc) {
+        alert('Account Name Can not Empty! ');
+        this.$refs.useraccInput.focus();
+        return;
+      } if (!this.passwd) {
+        alert('Password Can not Empty! ');
+        this.$refs.passwdInput.focus();
+        return;
+      } if (!this.repasswd) {
+        alert('Repassword Can not Empty! ');
+        this.$refs.repasswdInput.focus();
+        return;
+      } if (this.repasswd !== this.passwd) {
+        alert('Password do not match! ');
+        this.$refs.repasswdInput.focus();
+        return;
+      } if (!this.email) {
+        alert('Email Can not Empty! ');
+        this.$refs.emailInput.focus();
+        return;
+      } if (!this.callphone) {
+        alert('CallPhone Can not Empty! ');
+        this.$refs.callphoneInput.focus();
+        return;
+      } if (!this.referrall_id) {
+        alert('Referrall Id Can not Empty! ');
+        this.$refs.referrall_idInput.focus();
+        return;
+      } if (!this.firstname) {
+        alert('First Name Can not Empty! ');
+        this.$refs.firstnameInput.focus();
+        return;
+      } if (!this.lastname) {
+        alert('Last Name Can not Empty! ');
+        this.$refs.lastnameInput.focus();
+        return;
+      } if (!this.currency) {
+        alert('Please Select Currency!');
+        this.$refs.currencyInput.focus();
+        return;
+      } if (!this.bank) {
+        alert('Please Select Bank');
+        this.$refs.bankInput.focus();
+        return;
+      } if (!this.accbankname) {
+        alert('Bank Account Name Can not Empty!');
+        this.$refs.accbanknameInput.focus();
+        return;
+      } if (!this.accbanknumber) {
+        alert('Bank Account Number Can not Empty!');
+        this.$refs.accbanknumberInput.focus();
+        return;
+      }
       try {
         const response = await fetch('http://localhost:3000/register', {
           method: 'POST',
@@ -157,20 +221,9 @@ export default {
         const data = await response.json();
         if (data.success) {
           alert('Registration successful!');
-          // localStorage.setItem('userToken', response.data.token); // Store token if provided by your backend
+          this.clearForm();
           this.$router.push({ name: 'DashboardIndex' });
-          this.useracc = '',
-            this.email = '',
-            this.passwd = '',
-            this.repasswd = '',
-            this.callphone = '',
-            this.referrall_id = '',
-            this.firstname = '',
-            this.lastname = '',
-            this.currency = '',
-            this.bank = '',
-            this.accbankname = '',
-            this.accbanknumber = ''
+
         } else {
           alert('Registration failed: ' + data.message);
         }
@@ -178,7 +231,58 @@ export default {
         console.error('Error:', error);
         alert('An error occurred while registering.');
       }
+    },
+    focusInput(input) {
+      this.focusedInput = input;
+    },
+    clearForm() {
+      this.useracc = '',
+        this.email = '',
+        this.passwd = '',
+        this.repasswd = '',
+        this.callphone = '',
+        this.referrall_id = '',
+        this.firstname = '',
+        this.lastname = '',
+        this.currency = '',
+        this.bank = '',
+        this.accbankname = '',
+        this.accbanknumber = ''
+    },
+    validateInput() {
+      //Validate useracc
+      if (/^(?=.*[a-zA-Z])(?=.*\d).*$/.test(this.useracc)) {
+        this.useraccMessage = '';
+      } else {
+        this.useraccMessage = 'Account name should contain at least one letter and one number.';
+      }
+      //Validate passwd
+      if (/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.passwd)) {
+        this.passwdMessage = '';
+      } else {
+        this.passwdMessage = 'Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.';
+      }
+      // Validate email
+      if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+        this.emailMessage = '';
+      } else {
+        this.emailMessage = 'Invalid email format.xxxxxx@gmail.com';
+      }
     }
-  }
+  },
+  watch: {
+    useracc: 'validateInput',
+    passwd: 'validateInput',
+    repasswd: 'validateInput',
+    email: 'validateInput',
+    callphone: 'validateInput',
+    referrall_id: 'validateInput',
+    firstname: 'validateInput',
+    lastname: 'validateInput',
+    currency: 'validateInput',
+    bank: 'validateInput',
+    accbankname: 'validateInput',
+    accbanknumber: 'validateInput',
+  },
 };
 </script>
