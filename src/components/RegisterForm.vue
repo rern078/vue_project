@@ -68,12 +68,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="input_field radio_option">
-              <input type="radio" name="radiogroup1" id="rd1">
-              <label for="rd1">Male</label>
-              <input type="radio" name="radiogroup1" id="rd2">
-              <label for="rd2">Female</label>
-            </div> -->
             <div class="input_field select_option">
               <span><i aria-hidden="true" class="fa-solid fa-dollar-sign"></i></span>
               <select v-model="currency" ref="currencyInput" name="currency" id="currency">
@@ -119,10 +113,6 @@
             <div class="input_field checkbox_option">
               <input type="checkbox" id="cb1">
               <label for="cb1">I agree with terms and conditions</label>
-            </div>
-            <div class="input_field checkbox_option">
-              <input type="checkbox" id="cb2">
-              <label for="cb2">I want to receive the newsletter</label>
             </div>
             <input class="button register_account" type="submit" value="Register" />
           </form>
