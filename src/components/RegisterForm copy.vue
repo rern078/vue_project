@@ -146,61 +146,61 @@ export default {
 
   methods: {
     async register() {
-      this.validateInput();
-      // Validation check for empty fields
-      if (!this.useracc) {
-        alert('Account Name Can not Empty! ');
-        this.$refs.useraccInput.focus();
-        return;
-      } if (!this.passwd) {
-        alert('Password Can not Empty! ');
-        this.$refs.passwdInput.focus();
-        return;
-      } if (!this.repasswd) {
-        alert('Repassword Can not Empty! ');
-        this.$refs.repasswdInput.focus();
-        return;
-      } if (this.repasswd !== this.passwd) {
-        alert('Password do not match! ');
-        this.$refs.repasswdInput.focus();
-        return;
-      } if (!this.email) {
-        alert('Email Can not Empty! ');
-        this.$refs.emailInput.focus();
-        return;
-      } if (!this.callphone) {
-        alert('CallPhone Can not Empty! ');
-        this.$refs.callphoneInput.focus();
-        return;
-      } if (!this.referrall_id) {
-        alert('Referrall Id Can not Empty! ');
-        this.$refs.referrall_idInput.focus();
-        return;
-      } if (!this.firstname) {
-        alert('First Name Can not Empty! ');
-        this.$refs.firstnameInput.focus();
-        return;
-      } if (!this.lastname) {
-        alert('Last Name Can not Empty! ');
-        this.$refs.lastnameInput.focus();
-        return;
-      } if (!this.currency) {
-        alert('Please Select Currency!');
-        this.$refs.currencyInput.focus();
-        return;
-      } if (!this.bank) {
-        alert('Please Select Bank');
-        this.$refs.bankInput.focus();
-        return;
-      } if (!this.accbankname) {
-        alert('Bank Account Name Can not Empty!');
-        this.$refs.accbanknameInput.focus();
-        return;
-      } if (!this.accbanknumber) {
-        alert('Bank Account Number Can not Empty!');
-        this.$refs.accbanknumberInput.focus();
-        return;
-      }
+      // this.validateInput();
+      // // Validation check for empty fields
+      // if (!this.useracc) {
+      //   alert('Account Name Can not Empty! ');
+      //   this.$refs.useraccInput.focus();
+      //   return;
+      // } if (!this.passwd) {
+      //   alert('Password Can not Empty! ');
+      //   this.$refs.passwdInput.focus();
+      //   return;
+      // } if (!this.repasswd) {
+      //   alert('Repassword Can not Empty! ');
+      //   this.$refs.repasswdInput.focus();
+      //   return;
+      // } if (this.repasswd !== this.passwd) {
+      //   alert('Password do not match! ');
+      //   this.$refs.repasswdInput.focus();
+      //   return;
+      // } if (!this.email) {
+      //   alert('Email Can not Empty! ');
+      //   this.$refs.emailInput.focus();
+      //   return;
+      // } if (!this.callphone) {
+      //   alert('CallPhone Can not Empty! ');
+      //   this.$refs.callphoneInput.focus();
+      //   return;
+      // } if (!this.referrall_id) {
+      //   alert('Referrall Id Can not Empty! ');
+      //   this.$refs.referrall_idInput.focus();
+      //   return;
+      // } if (!this.firstname) {
+      //   alert('First Name Can not Empty! ');
+      //   this.$refs.firstnameInput.focus();
+      //   return;
+      // } if (!this.lastname) {
+      //   alert('Last Name Can not Empty! ');
+      //   this.$refs.lastnameInput.focus();
+      //   return;
+      // } if (!this.currency) {
+      //   alert('Please Select Currency!');
+      //   this.$refs.currencyInput.focus();
+      //   return;
+      // } if (!this.bank) {
+      //   alert('Please Select Bank');
+      //   this.$refs.bankInput.focus();
+      //   return;
+      // } if (!this.accbankname) {
+      //   alert('Bank Account Name Can not Empty!');
+      //   this.$refs.accbanknameInput.focus();
+      //   return;
+      // } if (!this.accbanknumber) {
+      //   alert('Bank Account Number Can not Empty!');
+      //   this.$refs.accbanknumberInput.focus();
+      //   return;
+      // }
       try {
         const response = await fetch('http://localhost:3000/register', {
           method: 'POST',
@@ -253,77 +253,77 @@ export default {
         this.accbankname = '',
         this.accbanknumber = ''
     },
-    validateInput() {
-      //Validate useracc
-      if (/^[a-zA-Z0-9]{6,16}$/.test(this.useracc)) {
-        this.useraccMessage = '';
-      } else {
-        this.useraccMessage = 'Account name should contain at least one letter and one number.';
-      }
-      //Validate passwd
-      if (/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.passwd)) {
-        this.passwdMessage = '';
-      } else {
-        this.passwdMessage = 'Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.';
-      }
-      // Validate email
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)) {
-        this.emailMessage = '';
-      } else {
-        this.emailMessage = 'Invalid email format.xxxxxx@gmail.com';
-      }
-      // Validate callphone
-      if (/^\d{8,15}$/.test(this.callphone)) {
-        this.callphoneMessage = '';
-      } else {
-        this.callphoneMessage = 'Invalid phone number format 8 to 15, contain number.';
-      }
-      // Validate Referrall Id
-      if (/^\d{4,6}$/.test(this.referrall_id)) {
-        this.referrall_idMessage = '';
-      } else {
-        this.referrall_idMessage = 'Invalid referrall id format, length, 4 to 6, contain number.';
-      }
-      //Validate first name
-      if (/^[a-zA-Z0-9]{6,16}$/.test(this.firstname)) {
-        this.firstnameMessage = '';
-      } else {
-        this.firstnameMessage = 'First name should contain at least one letter and one number.';
-      }
-      //Validate last name
-      // /^(?=.*[a-zA-Z])(?=.*\d).*$/
-      if (/^[a-zA-Z0-9]{6,16}$/.test(this.lastname)) {
-        this.lastnameMessage = '';
-      } else {
-        this.lastnameMessage = 'Account name should contain at least one letter and one number.';
-      }
-      // Validate bank name (letters only)
-      if (/^[a-zA-Z\s]{6,20}$/.test(this.accbankname)) {
-        this.accbanknameMessage = '';
-      } else {
-        this.accbanknameMessage = 'Bank name should contain only letters.length is 6 to 20!.';
-      }
-      // Validate bank number
-      if (/^\d{16}$/.test(this.accbanknumber)) {
-        this.accbanknumberMessage = '';
-      } else {
-        this.accbanknumberMessage = 'Bank number should contain exactly 16 digits.';
-      }
-    }
+    // validateInput() {
+    //   //Validate useracc
+    //   if (/^[a-zA-Z0-9]{6,16}$/.test(this.useracc)) {
+    //     this.useraccMessage = '';
+    //   } else {
+    //     this.useraccMessage = 'Account name should contain at least one letter and one number.';
+    //   }
+    //   //Validate passwd
+    //   if (/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.passwd)) {
+    //     this.passwdMessage = '';
+    //   } else {
+    //     this.passwdMessage = 'Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.';
+    //   }
+    //   // Validate email
+    //   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)) {
+    //     this.emailMessage = '';
+    //   } else {
+    //     this.emailMessage = 'Invalid email format.xxxxxx@gmail.com';
+    //   }
+    //   // Validate callphone
+    //   if (/^\d{8,15}$/.test(this.callphone)) {
+    //     this.callphoneMessage = '';
+    //   } else {
+    //     this.callphoneMessage = 'Invalid phone number format 8 to 15, contain number.';
+    //   }
+    //   // Validate Referrall Id
+    //   if (/^\d{4,6}$/.test(this.referrall_id)) {
+    //     this.referrall_idMessage = '';
+    //   } else {
+    //     this.referrall_idMessage = 'Invalid referrall id format, length, 4 to 6, contain number.';
+    //   }
+    //   //Validate first name
+    //   if (/^[a-zA-Z0-9]{6,16}$/.test(this.firstname)) {
+    //     this.firstnameMessage = '';
+    //   } else {
+    //     this.firstnameMessage = 'First name should contain at least one letter and one number.';
+    //   }
+    //   //Validate last name
+    //   // /^(?=.*[a-zA-Z])(?=.*\d).*$/
+    //   if (/^[a-zA-Z0-9]{6,16}$/.test(this.lastname)) {
+    //     this.lastnameMessage = '';
+    //   } else {
+    //     this.lastnameMessage = 'Account name should contain at least one letter and one number.';
+    //   }
+    //   // Validate bank name (letters only)
+    //   if (/^[a-zA-Z\s]{6,20}$/.test(this.accbankname)) {
+    //     this.accbanknameMessage = '';
+    //   } else {
+    //     this.accbanknameMessage = 'Bank name should contain only letters.length is 6 to 20!.';
+    //   }
+    //   // Validate bank number
+    //   if (/^\d{16}$/.test(this.accbanknumber)) {
+    //     this.accbanknumberMessage = '';
+    //   } else {
+    //     this.accbanknumberMessage = 'Bank number should contain exactly 16 digits.';
+    //   }
+    // }
   },
-  watch: {
-    useracc: 'validateInput',
-    passwd: 'validateInput',
-    repasswd: 'validateInput',
-    email: 'validateInput',
-    callphone: 'validateInput',
-    referrall_id: 'validateInput',
-    firstname: 'validateInput',
-    lastname: 'validateInput',
-    currency: 'validateInput',
-    bank: 'validateInput',
-    accbankname: 'validateInput',
-    accbanknumber: 'validateInput',
-  },
+  // watch: {
+  //   useracc: 'validateInput',
+  //   passwd: 'validateInput',
+  //   repasswd: 'validateInput',
+  //   email: 'validateInput',
+  //   callphone: 'validateInput',
+  //   referrall_id: 'validateInput',
+  //   firstname: 'validateInput',
+  //   lastname: 'validateInput',
+  //   currency: 'validateInput',
+  //   bank: 'validateInput',
+  //   accbankname: 'validateInput',
+  //   accbanknumber: 'validateInput',
+  // },
 };
 </script>

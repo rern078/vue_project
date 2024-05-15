@@ -1076,9 +1076,19 @@ body {
 .validation-message {
     color: red;
     font-size: 14px;
-    /* text-align: center; */
-    /* display: grid; */
     text-align: center;
 }
+
+/* .validation-message {
+    font-size: 14px;
+}
+
+.validation-message.invalid {
+    color: red;
+}
+
+.validation-message.valid {
+    color: blue;
+} */
 
 /* End Register Page  */
