@@ -1,77 +1,66 @@
+<!-- Modal.vue -->
 <template>
-      <div class="modal-overlay" v-if="visible">
-            <div class="modal">
-                  <div class="modal-header">
-                        <h3>{{ title }}</h3>
-                        <button @click="close">&times;</button>
-                  </div>
-                  <div class="modal-body">
-                        <p>{{ message }}</p>
-                  </div>
-                  <div class="modal-footer">
-                        <button @click="close">OK</button>
-                  </div>
+      <div class="modal" v-if="visible">
+            <div class="modal-content">
+                  <span class="close" @click="close">&times;</span>
+                  <p>{{ message }}</p>
             </div>
       </div>
 </template>
+
 <script>
 export default {
       props: {
-            title: String,
-            message: String,
-            visible: Boolean
+            visible: {
+                  type: Boolean,
+                  default: false
+            },
+            message: {
+                  type: String,
+                  default: ''
+            }
       },
       methods: {
             close() {
                   this.$emit('close');
             }
       }
-}
+};
 </script>
-<style scoped>
-.modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-}
 
+<style>
 .modal {
-      background: white;
+      display: block;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
       padding: 20px;
-      border-radius: 5px;
-      width: 300px;
+      border: 1px solid #888;
+      width: 80%;
 }
 
-.modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+.close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
 }
 
-.modal-body {
-      margin: 20px 0;
-}
-
-.modal-footer {
-      text-align: right;
-}
-
-button {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 5px 10px;
+.close:hover,
+.close:focus {
+      color: black;
+      text-decoration: none;
       cursor: pointer;
-      border-radius: 5px;
-}
-
-button:hover {
-      background: #0056b3;
 }
 </style>

@@ -137,16 +137,28 @@ export default {
   methods: {
     async register() {
       this.validateInput();
-      // Validation check for empty fields
-      if (!this.useracc) {
+      // Useracc Alert
+      if (this.useracc == '') {
         alert('Account Name Can not Empty! ');
         this.$refs.useraccInput.focus();
         return;
-      } if (!this.passwd) {
+      } else if (this.useraccMessage) {
+        alert("Account name should contain letter or number, length 6 to 16");
+        this.$refs.useraccInput.focus();
+        return;
+      }
+      //Password Alert
+      if (!this.passwd) {
         alert('Password Can not Empty! ');
         this.$refs.passwdInput.focus();
         return;
-      } if (!this.repasswd) {
+      } else if (this.passwdMessage) {
+        alert("Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.");
+        this.$refs.passwdInput.focus();
+        return;
+      }
+      // Repassword Alert
+      if (!this.repasswd) {
         alert('Repassword Can not Empty! ');
         this.$refs.repasswdInput.focus();
         return;
@@ -154,27 +166,58 @@ export default {
         alert('Password do not match! ');
         this.$refs.repasswdInput.focus();
         return;
-      } if (!this.email) {
+      }
+      // Email Alert
+      if (!this.email) {
         alert('Email Can not Empty! ');
         this.$refs.emailInput.focus();
         return;
-      } if (!this.callphone) {
+      } else if (this.emailMessage) {
+        alert('Invalid email format.xxxxxx@gmail.com');
+        this.$refs.emailInput.focus();
+        return;
+      }
+      // Callphone Alert
+      if (!this.callphone) {
         alert('CallPhone Can not Empty! ');
         this.$refs.callphoneInput.focus();
         return;
-      } if (!this.referrall_id) {
+      } else if (this.callphoneMessage) {
+        alert('Invalid phone number format 8 to 15, contain number.');
+        this.$refs.callphoneInput.focus();
+        return;
+      }
+      // Referrall Id Alert
+      if (!this.referrall_id) {
         alert('Referrall Id Can not Empty! ');
         this.$refs.referrall_idInput.focus();
         return;
-      } if (!this.firstname) {
+      } else if (this.referrall_idMessage) {
+        alert('Invalid referrall id format, length, 4 to 6, contain number.');
+        this.$refs.referrall_idInput.focus();
+        return;
+      }
+      // First name and Last name Alert
+      if (!this.firstname) {
         alert('First Name Can not Empty! ');
         this.$refs.firstnameInput.focus();
         return;
-      } if (!this.lastname) {
+      } else if (this.firstnameMessage) {
+        alert('First name should contain letter or number, length 2 to 16');
+        this.$refs.firstnameInput.focus();
+        return;
+      }
+      if (!this.lastname) {
         alert('Last Name Can not Empty! ');
         this.$refs.lastnameInput.focus();
         return;
-      } if (!this.currency) {
+      } else if (this.lastnameMessage) {
+        alert('Last name should contain letter or number, length 2 to 16');
+        this.$refs.lastnameInput.focus();
+        return;
+      }
+      // Alert Currency and Bank
+      if (!this.currency) {
         alert('Please Select Currency!');
         this.$refs.currencyInput.focus();
         return;
@@ -182,12 +225,22 @@ export default {
         alert('Please Select Bank');
         this.$refs.bankInput.focus();
         return;
-      } if (!this.accbankname) {
+      }
+      //Alert Acccount Name and Number
+      if (!this.accbankname) {
         alert('Bank Account Name Can not Empty!');
         this.$refs.accbanknameInput.focus();
         return;
-      } if (!this.accbanknumber) {
+      } else if (this.accbanknameMessage) { 
+        alert('Bank name should contain only letters.length is 6 to 20!.');
+        this.$refs.accbanknameInput.focus();
+        return;
+      }if (!this.accbanknumber) {
         alert('Bank Account Number Can not Empty!');
+        this.$refs.accbanknumberInput.focus();
+        return;
+      } else if (this.accbanknumberMessage) {
+        alert('Bank number should contain exactly 16 digits.');
         this.$refs.accbanknumberInput.focus();
         return;
       }
@@ -217,7 +270,6 @@ export default {
           alert('Registration successful!');
           this.clearForm();
           this.$router.push({ name: 'DashboardIndex' });
-
         } else {
           alert('Registration failed: ' + data.message);
         }
@@ -248,7 +300,7 @@ export default {
       if (/^[a-zA-Z0-9]{6,16}$/.test(this.useracc)) {
         this.useraccMessage = '';
       } else {
-        this.useraccMessage = 'Account name should contain at least one letter and one number.';
+        this.useraccMessage = 'Account name should contain letter or number, length 6 to 16.';
       }
       //Validate passwd
       if (/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.passwd)) {
@@ -275,17 +327,17 @@ export default {
         this.referrall_idMessage = 'Invalid referrall id format, length, 4 to 6, contain number.';
       }
       //Validate first name
-      if (/^[a-zA-Z0-9]{6,16}$/.test(this.firstname)) {
+      if (/^[a-zA-Z0-9]{2,16}$/.test(this.firstname)) {
         this.firstnameMessage = '';
       } else {
-        this.firstnameMessage = 'First name should contain at least one letter and one number.';
+        this.firstnameMessage = 'First name should contain letter or number, length 2 to 16';
       }
       //Validate last name
       // /^(?=.*[a-zA-Z])(?=.*\d).*$/
-      if (/^[a-zA-Z0-9]{6,16}$/.test(this.lastname)) {
+      if (/^[a-zA-Z0-9]{2,16}$/.test(this.lastname)) {
         this.lastnameMessage = '';
       } else {
-        this.lastnameMessage = 'Account name should contain at least one letter and one number.';
+        this.lastnameMessage = 'Account name should contain letter or number, length 2 to 16.';
       }
       // Validate bank name (letters only)
       if (/^[a-zA-Z\s]{6,20}$/.test(this.accbankname)) {

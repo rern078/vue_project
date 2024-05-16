@@ -10,11 +10,13 @@
           <form @submit.prevent="login">
             <div class="input_field">
               <span><i aria-hidden="true" class="fa fa-user"></i></span>
-              <input type="text" v-model="useracc" name="useracc" id="useracc" placeholder="Username" required />
+              <input type="text" ref="useraccInput" v-model="useracc" name="useracc" id="useracc" placeholder="Username"
+                @focus="focusInput('useracc')" />
             </div>
             <div class="input_field">
               <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <input type="password" v-model="passwd" name="passwd" id="passwd" placeholder="Password" required />
+              <input type="password" ref="passwdInput" v-model="passwd" name="passwd" id="passwd" placeholder="Password"
+                @focus="focusInput('passwd')" />
             </div>
             <input class="button login_account" type="submit" value="Login" />
           </form>
@@ -38,6 +40,18 @@ export default {
   },
   methods: {
     async login() {
+      // Useracc Alert
+      if (this.useracc == '') {
+        alert('Account Name Can not Empty! ');
+        this.$refs.useraccInput.focus();
+        return;
+      }
+      //Password Alert
+      if (!this.passwd) {
+        alert('Password Can not Empty! ');
+        this.$refs.passwdInput.focus();
+        return;
+      }
       try {
         console.log('Attempting to log in with:', this.useracc, this.passwd);
         const response = await axios.post('http://localhost:3000/login', {
@@ -47,7 +61,6 @@ export default {
         console.log('Login response:', response.data);
         if (response.data.success) {
           alert('Login successful!');
-          // Perform actions on successful login, e.g., redirect to dashboard
         } else {
           alert('Login failed: ' + response.data.message);
         }
@@ -55,7 +68,10 @@ export default {
         alert('An error occurred while logging in.');
         console.error('Error during login:', error);
       }
-    }
+    },
+    focusInput(input) {
+      this.focusedInput = input;
+    },
   }
 };
 </script>
