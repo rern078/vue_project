@@ -1079,16 +1079,15 @@ body {
     text-align: center;
 }
 
-/* .validation-message {
-    font-size: 14px;
-}
-
-.validation-message.invalid {
-    color: red;
-}
-
-.validation-message.valid {
-    color: blue;
-} */
-
 /* End Register Page  */
+
+/* Swal Alert Message  */
+div:where(.swal2-container).swal2-top,
+div:where(.swal2-container).swal2-center,
+div:where(.swal2-container).swal2-bottom {
+    z-index: 9999 !important;
+}
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{
+    background-color: goldenrod !important;
+}
+/* End Swal Alert Message  */

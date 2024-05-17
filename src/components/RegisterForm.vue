@@ -139,108 +139,196 @@ export default {
       this.validateInput();
       // Useracc Alert
       if (this.useracc == '') {
-        alert('Account Name Can not Empty! ');
+        this.$swal({
+          text: 'Account Name Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
         this.$refs.useraccInput.focus();
         return;
       } else if (this.useraccMessage) {
-        alert("Account name should contain letter or number, length 6 to 16");
+        this.$swal({
+          text: "Account name should contain letter or number, length 6 to 16",
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.useraccInput.focus();
         return;
       }
       //Password Alert
       if (!this.passwd) {
-        alert('Password Can not Empty! ');
+        this.$swal({
+          text: 'Password Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.passwdInput.focus();
         return;
       } else if (this.passwdMessage) {
-        alert("Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.");
+        this.$swal({
+          text: "Password should contain at least one letter, one number, and one symbol, and be at least 8 characters long.",
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.passwdInput.focus();
         return;
       }
       // Repassword Alert
       if (!this.repasswd) {
-        alert('Repassword Can not Empty! ');
+        this.$swal({
+          text: 'Repassword Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.repasswdInput.focus();
         return;
       } if (this.repasswd !== this.passwd) {
-        alert('Password do not match! ');
+        this.$swal({
+          text: 'Password do not match! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.repasswdInput.focus();
         return;
       }
       // Email Alert
       if (!this.email) {
-        alert('Email Can not Empty! ');
+        this.$swal({
+          text: 'Email Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.emailInput.focus();
         return;
       } else if (this.emailMessage) {
-        alert('Invalid email format.xxxxxx@gmail.com');
+        this.$swal({
+          text: 'Invalid email format.xxxxxx@gmail.com',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.emailInput.focus();
         return;
       }
       // Callphone Alert
       if (!this.callphone) {
-        alert('CallPhone Can not Empty! ');
+        this.$swal({
+          text: 'Phone Number Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.callphoneInput.focus();
         return;
       } else if (this.callphoneMessage) {
-        alert('Invalid phone number format 8 to 15, contain number.');
+        this.$swal({
+          text: 'Invalid phone number format 8 to 15, contain number.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.callphoneInput.focus();
         return;
       }
       // Referrall Id Alert
       if (!this.referrall_id) {
-        alert('Referrall Id Can not Empty! ');
+        this.$swal({
+          text: 'Referrall Id Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.referrall_idInput.focus();
         return;
       } else if (this.referrall_idMessage) {
-        alert('Invalid referrall id format, length, 4 to 6, contain number.');
+        this.$swal({
+          text: 'Invalid referrall id format, length, 4 to 6, contain number.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.referrall_idInput.focus();
         return;
       }
       // First name and Last name Alert
       if (!this.firstname) {
-        alert('First Name Can not Empty! ');
+        this.$swal({
+          text: 'First Name Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.firstnameInput.focus();
         return;
       } else if (this.firstnameMessage) {
-        alert('First name should contain letter or number, length 2 to 16');
+        this.$swal({
+          text: 'First name should contain letter or number, length 2 to 16',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.firstnameInput.focus();
         return;
       }
       if (!this.lastname) {
-        alert('Last Name Can not Empty! ');
+        this.$swal({
+          text: 'Last Name Can not Empty! ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.lastnameInput.focus();
         return;
       } else if (this.lastnameMessage) {
-        alert('Last name should contain letter or number, length 2 to 16');
+        this.$swal({
+          text: 'Last name should contain letter or number, length 2 to 16',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.lastnameInput.focus();
         return;
       }
       // Alert Currency and Bank
       if (!this.currency) {
-        alert('Please Select Currency!');
+        this.$swal({
+          text: 'Please Select Currency!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.currencyInput.focus();
         return;
       } if (!this.bank) {
-        alert('Please Select Bank');
+        this.$swal({
+          text: 'Please Select Bank!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.bankInput.focus();
         return;
       }
       //Alert Acccount Name and Number
       if (!this.accbankname) {
-        alert('Bank Account Name Can not Empty!');
+        this.$swal({
+          text: 'Bank Account Name Can not Empty!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.accbanknameInput.focus();
         return;
-      } else if (this.accbanknameMessage) { 
-        alert('Bank name should contain only letters.length is 6 to 20!.');
+      } else if (this.accbanknameMessage) {
+        this.$swal({
+          text: 'Bank name should contain only letters.length is 6 to 20!.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.accbanknameInput.focus();
         return;
-      }if (!this.accbanknumber) {
-        alert('Bank Account Number Can not Empty!');
+      } if (!this.accbanknumber) {
+        this.$swal({
+          text: 'Bank Account Number Can not Empty!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.accbanknumberInput.focus();
         return;
       } else if (this.accbanknumberMessage) {
-        alert('Bank number should contain exactly 16 digits.');
+        this.$swal({
+          text: 'Bank number should contain exactly 16 digits.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         this.$refs.accbanknumberInput.focus();
         return;
       }
@@ -267,11 +355,19 @@ export default {
         });
         const data = await response.json();
         if (data.success) {
-          alert('Registration successful!');
+          this.$swal({
+            text: 'Registration successful!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
           this.clearForm();
           this.$router.push({ name: 'DashboardIndex' });
         } else {
-          alert('Registration failed: ' + data.message);
+          this.$swal({
+            text: 'Registration failed: ' + data.message,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
         }
       } catch (error) {
         console.error('Error:', error);

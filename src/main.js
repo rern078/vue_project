@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import '@fortawesome/fontawesome-free/css/all.css'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 import './assets/styles/fontstyle.css'
 import './assets/styles/styles.css'
 import './assets/styles/mreset.css'
@@ -18,12 +20,13 @@ const i18n = createI18n({
       locale: 'en',
       fallbackLocale: 'en',
       messages: {
-            en,kh,cn,vn, id,th
+            en, kh, cn, vn, id, th
       },
 });
 
 createApp(App)
       .use(router)
+      .use(VueSweetalert2)
       .use(i18n)
       .mount('#app')
 

@@ -35,20 +35,28 @@ export default {
   data() {
     return {
       useracc: '',
-      passwd: ''
+      passwd: '',
     };
   },
   methods: {
     async login() {
       // Useracc Alert
       if (this.useracc == '') {
-        alert('Account Name Can not Empty! ');
+        this.$swal({
+          text: 'Account Name Cannot Be Empty!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
         this.$refs.useraccInput.focus();
         return;
       }
       //Password Alert
       if (!this.passwd) {
-        alert('Password Can not Empty! ');
+        this.$swal({
+          text: 'Password Cannot Be Empty!',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
         this.$refs.passwdInput.focus();
         return;
       }
@@ -60,12 +68,24 @@ export default {
         });
         console.log('Login response:', response.data);
         if (response.data.success) {
-          alert('Login successful!');
+          this.$swal({
+            text: 'Login Successful!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
         } else {
-          alert('Login failed: ' + response.data.message);
+          this.$swal({
+            text: 'Login failed: ' + response.data.message,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
         }
       } catch (error) {
-        alert('An error occurred while logging in.');
+        this.$swal({
+          text: 'An error occurred while logging in.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
         console.error('Error during login:', error);
       }
     },
